@@ -13,6 +13,10 @@
  * (c) 2015 by NOVARDIS
  *********************************************************************/
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+
 /**
  * @author evgeniy
  */
@@ -20,8 +24,19 @@ public class DogTestDrive
 {
   public static void main(String[] args)
   {
-    Dog dog = new Dog();
-    dog.size = 40;
-    dog.bark();
+    Dog dog1 = new Dog();
+    dog1.size = 70;
+    Dog dog2 = new Dog();
+    dog2.size = 8;
+    Dog dog3 = new Dog();
+    dog3.size = 35;
+
+
+    dog1.bark();
+    dog2.bark();
+    dog3.bark();
+
+
+    ArrayList<String> strings = new ArrayList<>(Arrays.asList("hello", "world", "third"));
   }
 }
