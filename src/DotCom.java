@@ -21,6 +21,16 @@ import java.util.ArrayList;
 public class DotCom
 {
   private ArrayList<String> locationCells;
+  private String name;
+
+  public DotCom()
+  {
+  }
+
+  public DotCom(String name)
+  {
+    this.setName(name);
+  }
 
   String checkYourself(String userInput)
   {
@@ -34,19 +44,23 @@ public class DotCom
       if (locationCells.isEmpty())
       {
         result = "Потопил";
+        System.out.println("Ой! Вы потопили " + name + " :( ");
       }
       else
       {
         result = "Попал";
       }
     }
-
-    System.out.println(result);
     return result;
   }
 
   public void setLocationCells(ArrayList<String> locationCells)
   {
     this.locationCells = locationCells;
+  }
+
+  public void setName(String name)
+  {
+    this.name = name;
   }
 }
