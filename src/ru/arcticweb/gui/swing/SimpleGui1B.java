@@ -27,7 +27,7 @@ import javax.swing.WindowConstants;
  */
 public class SimpleGui1B implements ActionListener
 {
-  JButton button;
+  private JButton button;
 
   public static void main(String[] args)
   {

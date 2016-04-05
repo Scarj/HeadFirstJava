@@ -32,7 +32,7 @@ public class SimpleGuiFx1 extends Application
   }
 
   @Override
-  public void start(Stage primaryStage) throws Exception
+  public void start(Stage primaryStage)
   {
     primaryStage.setTitle("Hello world!");
     Button button = new Button();

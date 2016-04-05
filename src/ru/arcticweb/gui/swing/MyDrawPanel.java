@@ -19,6 +19,7 @@ import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.Random;
 
 import javax.swing.JPanel;
 
@@ -28,12 +29,15 @@ import javax.swing.JPanel;
 public class MyDrawPanel extends JPanel
 {
   @Override
-  protected void paintComponent(Graphics g)
+  protected void paintComponent(Graphics graphics)
   {
-    Graphics2D graphics2D = (Graphics2D) g;
-    GradientPaint gradientPaint = new GradientPaint(70,70,Color.BLUE,150,150,Color.ORANGE);
+    Graphics2D graphics2D = (Graphics2D) graphics;
+    Random random = new Random();
+    Color fromColor = new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255));
+    Color toColor = new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255));
+    GradientPaint gradientPaint = new GradientPaint(70, 70, fromColor, 150, 150, toColor);
     graphics2D.setPaint(gradientPaint);
-    g.fillRect(20, 50, 100, 100);
+    graphics.fillRect(20, 50, 100, 100);
   }
 }
 
