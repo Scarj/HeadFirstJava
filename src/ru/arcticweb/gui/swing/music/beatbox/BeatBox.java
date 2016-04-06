@@ -78,9 +78,9 @@ public class BeatBox
     buttonBox.add(downTempo);
 
     Box nameBox = new Box(BoxLayout.Y_AXIS);
-    for (String instrumentName : instrumentNames)
+    for (int i = 0; i < 16; i++)
     {
-      nameBox.add(new Label(instrumentName));
+      nameBox.add(new Label(instrumentNames[i]));
     }
 
     background.add(BorderLayout.EAST, buttonBox);
@@ -118,7 +118,7 @@ public class BeatBox
       sequencer.open();
       sequence = new Sequence(Sequence.PPQ, 4);
       track = sequence.createTrack();
-      sequencer.setTempoInBPM(1700);
+      sequencer.setTempoInBPM(124);
     }
     catch (MidiUnavailableException | InvalidMidiDataException e)
     {
@@ -151,10 +151,10 @@ public class BeatBox
       }
 
       makeTracks(trackList);
-      track.add(createEvent(176, 1, 127, 0, 16));
+      track.add(createEvent(ShortMessage.CONTROL_CHANGE, 1, 127, 0, 16));
     }
 
-    track.add(createEvent(192, 9, 1, 9, 15));
+    track.add(createEvent(ShortMessage.PROGRAM_CHANGE, 9, 1, 9, 15));
 
     try
     {
@@ -172,12 +172,13 @@ public class BeatBox
 
   private void makeTracks(int[] trackList)
   {
-    for (int key : trackList)
+    for (int i = 0; i < 16; i++)
     {
+      int key = trackList[i];
       if (key != 0)
       {
-        track.add(createEvent(144, 9, key, 100, key));
-        track.add(createEvent(128, 9, key, 100, key + 2));
+        track.add(createEvent(ShortMessage.NOTE_ON, 9, key, 100, i));
+        track.add(createEvent(ShortMessage.NOTE_OFF, 9, key, 100, i + 1));
       }
     }
   }
